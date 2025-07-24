@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Store - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-content">
+            <h2>Welcome to PC Store</h2>
+            <p>Please login to continue</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <div id="error-message" class="error-message" style="display: none;"></div>
+            </form>
+            <div class="demo-credentials">
+                <p><strong>Demo Credentials:</strong></p>
+                <p>Email: admin@pcstore.com</p>
+                <p>Password: password123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website Content -->
+    <div id="mainContent" class="main-website" style="display: none;">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>PC Store</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="products.html" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="support.html" class="nav-link">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="logout()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to PC Store</h1>
+                    <p>Your one-stop destination for high-performance computers</p>
+                    <a href="products.html" class="cta-button">Shop Now</a>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2>Why Choose Us?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>High Performance</h3>
+                            <p>Top-tier components for maximum performance</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Best Prices</h3>
+                            <p>Competitive pricing on all our products</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Expert Support</h3>
+                            <p>Professional assistance when you need it</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 PC Store. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
