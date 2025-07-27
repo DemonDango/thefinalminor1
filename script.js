@@ -1,4 +1,4 @@
-// Product data
+// product array
 const products = [
   {
     id: 1,
@@ -50,73 +50,8 @@ const products = [
   },
 ]
 
-// Login credentials
-const validCredentials = {
-  email: "admin@pcstore.com",
-  password: "password123",
-}
 
-// Check if user is logged in
-function checkLoginStatus() {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"
-  const loginModal = document.getElementById("loginModal")
-  const mainContent = document.getElementById("mainContent")
-
-  if (isLoggedIn) {
-    if (loginModal) loginModal.style.display = "none"
-    if (mainContent) mainContent.style.display = "block"
-  } else {
-    // If not on index page, redirect to index
-    if (!window.location.pathname.endsWith("index.html") && !window.location.pathname.endsWith("/")) {
-      window.location.href = "index.html"
-    }
-    if (loginModal) loginModal.style.display = "flex"
-    if (mainContent) mainContent.style.display = "none"
-  }
-}
-
-// Handle login form submission
-function handleLogin(event) {
-  event.preventDefault()
-
-  const email = document.getElementById("email").value.trim()
-  const password = document.getElementById("password").value
-  const errorMessage = document.getElementById("error-message")
-
-  if (email === validCredentials.email && password === validCredentials.password) {
-    // Login successful
-    localStorage.setItem("isLoggedIn", "true")
-    localStorage.setItem("userEmail", email)
-
-    // Hide modal and show main content
-    document.getElementById("loginModal").style.display = "none"
-    document.getElementById("mainContent").style.display = "block"
-
-    errorMessage.style.display = "none"
-  } else {
-    // Login failed
-    errorMessage.textContent = "Invalid email or password. Please try again."
-    errorMessage.style.display = "block"
-    document.getElementById("password").value = ""
-  }
-}
-
-// Logout function
-function logout() {
-  localStorage.removeItem("isLoggedIn")
-  localStorage.removeItem("userEmail")
-  window.location.href = "index.html"
-}
-
-// Function to render products
 function renderProducts() {
-  const productsContainer = document.getElementById("products-container")
-
-  if (!productsContainer) {
-    return // Exit if we're not on the products page
-  }
-
-  // Use map function to create product cards
   const productCards = products
     .map((product) => {
       return `
@@ -131,11 +66,11 @@ function renderProducts() {
         `
     })
     .join("")
-
-  productsContainer.innerHTML = productCards
+    
+ document.getElementById('products-container').innerHTML = productCards
 }
 
-// Function to handle product purchase
+// function to handle product purchase
 function buyProduct(productId) {
   const product = products.find((p) => p.id === productId)
   if (product) {
@@ -143,17 +78,7 @@ function buyProduct(productId) {
   }
 }
 
-// Initialize the page when DOM is loaded
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Check login status first
-  checkLoginStatus()
-
-  // Set up login form if it exists
-  const loginForm = document.getElementById("loginForm")
-  if (loginForm) {
-    loginForm.addEventListener("submit", handleLogin)
-  }
-
-  // Render products if on products page
   renderProducts()
 })
